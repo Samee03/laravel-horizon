@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Notifications\NotifyUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('send', function () {
+    User::all()->map->notify(new NotifyUser());
+    return 'Done';
 });
